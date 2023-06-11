@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ToastContainer } from 'react-toastify';
 
 import SignIn from './pages/SignIn';
-import Dashboard from './pages/Dashboard';
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
 
 import { UserProvider } from './contexts/UserContext';
 
@@ -15,13 +16,14 @@ export default function App() {
       <UserProvider>
         <Router>
           <Routes>
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/" element={<SignUp />} />
+            <Route path="/Sign-in" element={<SignIn />} />
 
             <Route
-              path="/dashboard"
+              path="/home"
               element={
                 <ProtectedRouteGuard>
-                  <Dashboard />
+                  <Home />
                 </ProtectedRouteGuard>
               }
             >

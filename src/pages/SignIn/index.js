@@ -26,7 +26,7 @@ export default function SignIn() {
       const userData = await signIn(email, password);
       setUserData(userData);
       toast('Login realizado com sucesso!');
-      navigate('/dashboard');
+      navigate('/home');
     } catch (err) {
       toast('Não foi possível fazer o login!');
     }
@@ -36,7 +36,7 @@ export default function SignIn() {
     <AuthLayout >
       <Row>
         <img src="https://http.cat/412.jpg" alt="Event Logo" width="60px" />
-        <Title>teste</Title>
+        <Title>SignIn</Title>
       </Row>
       <Row>
         <Label>Entrar</Label>
@@ -47,7 +47,7 @@ export default function SignIn() {
         </form>
       </Row>
       <Row>
-        <Link to="/enroll">Não possui login? Inscreva-se</Link>
+        <Link to="/">Não possui login? Inscreva-se</Link>
       </Row>
     </AuthLayout>
   );
