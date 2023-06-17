@@ -1,11 +1,29 @@
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MoneyIn from '../../components/ActionButtons/RegisterMoneyIn';
 import MoneyOut from '../../components/ActionButtons/RegisterMoneyOut';
 import Debt from '../../components/ActionButtons/RegisterDebt';
 import Credit from '../../components/ActionButtons/RegisterCredit';
 
+import getTransactions from '../../hooks/api/getTransactions';
+
 const Home = () => {
+  // State to store the transactions
+  const [transactions, setTransactions] = useState([]);
+
+  // Fetch transactions on component mount
+  useEffect(() => {
+    const fetchTransactions = async() => {
+      try {
+        const transactionsData = await getTransactions();
+        setTransactions(transactionsData);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
   return (
     <Container>
       <Header>Coin Manager</Header>
@@ -22,21 +40,15 @@ const Home = () => {
           <CurrentAmount>Current Amount: $500</CurrentAmount>
           <TransactionHistory>
             <h3>Transaction History</h3>
-            <Transaction>
-              <TransactionDate>June 1, 2023</TransactionDate>
-              <TransactionDescription>Grocery Shopping</TransactionDescription>
-              <TransactionAmount isNegative={true}>-$50</TransactionAmount>
-            </Transaction>
-            <Transaction>
-              <TransactionDate>May 28, 2023</TransactionDate>
-              <TransactionDescription>Dinner at Restaurant</TransactionDescription>
-              <TransactionAmount isNegative={true}>-$30</TransactionAmount>
-            </Transaction>
-            <Transaction>
-              <TransactionDate>May 25, 2023</TransactionDate>
-              <TransactionDescription>Gas Refill</TransactionDescription>
-              <TransactionAmount isNegative={true}>-$20</TransactionAmount>
-            </Transaction>
+            {transactions.map((transaction) => (
+              <Transaction key={transaction.id}>
+                <TransactionDate>{transaction.date}</TransactionDate>
+                <TransactionDescription>{transaction.description}</TransactionDescription>
+                <TransactionAmount isNegative={transaction.amount < 0}>
+                  {transaction.amount}
+                </TransactionAmount>
+              </Transaction>
+            ))}
           </TransactionHistory>
         </Content>
       </Main>
