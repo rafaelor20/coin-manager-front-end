@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import MoneyIn from '../../components/ActionButtons/RegisterMoneyIn';
+
+import MoneyInButton from '../../components/ActionButtons/RegisterMoneyIn';
+import MoneyIn from '../../components/ActionComponents/MoneyIn';
+
 import MoneyOut from '../../components/ActionButtons/RegisterMoneyOut';
 import Debt from '../../components/ActionButtons/RegisterDebt';
 import Credit from '../../components/ActionButtons/RegisterCredit';
@@ -8,15 +11,24 @@ import Credit from '../../components/ActionButtons/RegisterCredit';
 import getTransactions from '../../hooks/api/getTransactions';
 
 const Home = () => {
-  // State to store the transactions
+  const { useGetTransactions } = getTransactions();
   const [transactions, setTransactions] = useState([]);
+  const [showMoneyIn, setShowMoneyIn] = useState(false);
+  const [currentAmount, setCurrentAmount] = useState(0);
 
-  // Fetch transactions on component mount
+  const handleMoneyInButtonClick = () => {
+    setShowMoneyIn(true);
+  };
+
+  const handleMoneyInClose = () => {
+    setShowMoneyIn(false);
+  };
+
   useEffect(() => {
     const fetchTransactions = async() => {
       try {
-        const transactionsData = await getTransactions();
-        setTransactions(transactionsData);
+        const response = await useGetTransactions();
+        setTransactions(response);
       } catch (error) {
         console.error('Error fetching transactions:', error);
       }
@@ -24,11 +36,21 @@ const Home = () => {
 
     fetchTransactions();
   }, []);
+
+  useEffect(() => {
+    const calculateCurrentAmount = () => {
+      const sum = transactions.reduce((total, transaction) => total + transaction.amount, 0);
+      setCurrentAmount(sum);
+    };
+
+    calculateCurrentAmount();
+  }, [transactions]);
+
   return (
     <Container>
       <Header>Coin Manager</Header>
       <ActionButtons>
-        <MoneyIn />
+        <MoneyInButton onClick={handleMoneyInButtonClick} />
         <MoneyOut />
       </ActionButtons>
       <Main>
@@ -37,7 +59,7 @@ const Home = () => {
           <Credit />
         </LeftButtons>
         <Content>
-          <CurrentAmount>Current Amount: $500</CurrentAmount>
+          <CurrentAmount>Current Amount: ${currentAmount}</CurrentAmount>
           <TransactionHistory>
             <h3>Transaction History</h3>
             {transactions.map((transaction) => (
@@ -53,11 +75,14 @@ const Home = () => {
         </Content>
       </Main>
       <Footer>&copy; 2023 Coin Manager. All rights reserved.</Footer>
+      {showMoneyIn && <MoneyIn onClose={handleMoneyInClose} />}
     </Container>
   );
 };
 
 export default Home;
+
+// Styled components...
 
 const Container = styled.div`
   display: flex;

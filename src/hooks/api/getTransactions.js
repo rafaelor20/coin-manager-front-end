@@ -4,16 +4,15 @@ import * as transactionApi from '../../services/transactionApi';
 
 export default function getTransactions() {
   const token = useToken();
-
   const {
     loading: getTransactionsLoading,
     error: getTransactionsError,
-    act: getTransactions
+    act: useGetTransactions
   } = useAsync(() => transactionApi.getTransactions(token), false);
 
   return {
     getTransactionsLoading,
     getTransactionsError,
-    getTransactions
+    useGetTransactions
   };
 }

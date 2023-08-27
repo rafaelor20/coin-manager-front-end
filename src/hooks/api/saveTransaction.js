@@ -6,14 +6,14 @@ export default function saveTransactions() {
   const token = useToken();
 
   const {
-    loading: saveTransactionsLoading,
-    error: saveTransactionsError,
-    act: saveTransactions
-  } = useAsync((data) => transactionApi.getTransactions(data, token), false);
+    loading: saveTransactionLoading,
+    error: saveTransactionError,
+    act: saveTransaction
+  } = useAsync((data) => transactionApi.storeTransaction(data, token), false);
 
   return {
-    saveTransactionsLoading,
-    saveTransactionsError,
-    saveTransactions
+    saveTransactionLoading,
+    saveTransactionError,
+    saveTransaction
   };
 }

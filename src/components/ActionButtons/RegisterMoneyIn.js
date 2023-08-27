@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
-export default function MoneyIn() {
+const MoneyInButton = ({ onClick }) => {
   return (
-    <ActionButton>Register Money In</ActionButton>
+    <ActionButton onClick={onClick}>Register Money In</ActionButton>
   );
-}
+};
+
+export default MoneyInButton;
 
 const ActionButton = styled.button`
   display: inline-block;
