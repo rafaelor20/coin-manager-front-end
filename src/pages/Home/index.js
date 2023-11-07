@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import getTransactions from '../../hooks/api/getTransactions';
 import logoutButton from '../../assets/log-out.svg';
 
-import MoneyInButton from '../../components/RegisterButtons/RegisterMoneyIn';
-import MoneyIn from '../../components/ActionComponents/MoneyIn';
-
-import MoneyOut from '../../components/RegisterButtons/RegisterMoneyOut';
+import MoneyIn from '../../components/RegisterButtons/RegisterMoneyIn';
+import MoneyOut from '../../components/RegisterButtons/RegisterCredit';
 import Debt from '../../components/RegisterButtons/RegisterDebt';
 import Credit from '../../components/RegisterButtons/RegisterCredit';
 
-import getTransactions from '../../hooks/api/getTransactions';
+import Footer from '../../components/Footer';
 
 const Home = () => {
   const { useGetTransactions } = getTransactions();
@@ -71,15 +70,15 @@ const Home = () => {
           </TransactionHistory>
         </Content>
         <ActionButtons>
-          <MoneyInButton onClick={handleMoneyInButtonClick} />
+          <MoneyIn />
           <MoneyOut />
         </ActionButtons>
         <ActionButtons>
-          <Debt />
           <Credit />
+          <Debt />          
         </ActionButtons>
       </Main>
-      <Footer>&copy; 2023 Coin Manager. All rights reserved.</Footer>
+      <Footer />
       {showMoneyIn && <MoneyIn onClose={handleMoneyInClose} />}
     </Container>
   );
@@ -158,17 +157,11 @@ const TransactionAmount = styled.span`
   color: ${({ isNegative }) => (isNegative ? 'red' : 'green')};
 `;
 
-const Footer = styled.div`
-  margin-top: 20px;
-  font-size: 14px;
-  color: #888;
-`;
-
 const ActionButtons = styled.div`
   width: 80%;
   margin-top: 20px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   flex-wrap: nowrap;
   
 `;

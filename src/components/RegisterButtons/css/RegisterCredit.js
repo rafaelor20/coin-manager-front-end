@@ -1,4 +1,4 @@
-import RegisterButton from './css/RegisterButton';
+import RegisterButton from './RegisterButton';
 
 export default function Credit() {
   return (

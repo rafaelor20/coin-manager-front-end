@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const RegisterButton = styled.button`
   display: inline-block;
+  width: 45%;
   margin: 2px;
   padding: 10px 20px;
   background-color: #007bff;
