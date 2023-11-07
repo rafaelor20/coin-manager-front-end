@@ -80,7 +80,7 @@ export default function SignUp() {
         </form>
       </Row>
       <Row>
-        <Link to="/sign-in">Já está inscrito? Faça login</Link>
+        <Link to="/">Já está inscrito? Faça login</Link>
       </Row>
     </AuthLayout>
   );

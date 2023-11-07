@@ -47,7 +47,7 @@ export default function SignIn() {
         </form>
       </Row>
       <Row>
-        <Link to="/">Não possui login? Inscreva-se</Link>
+        <Link to="/Sign-up">Não possui login? Inscreva-se</Link>
       </Row>
     </AuthLayout>
   );

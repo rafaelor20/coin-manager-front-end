@@ -16,8 +16,8 @@ export default function App() {
       <UserProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<SignUp />} />
-            <Route path="/Sign-in" element={<SignIn />} />
+            <Route path="/" element={<SignIn />} />
+            <Route path="/Sign-up" element={<SignUp />} />
 
             <Route
               path="/home"

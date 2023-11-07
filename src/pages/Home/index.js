@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import MoneyInButton from '../../components/ActionButtons/RegisterMoneyIn';
+import logoutButton from '../../assets/log-out.svg';
+
+import MoneyInButton from '../../components/RegisterButtons/RegisterMoneyIn';
 import MoneyIn from '../../components/ActionComponents/MoneyIn';
 
-import MoneyOut from '../../components/ActionButtons/RegisterMoneyOut';
-import Debt from '../../components/ActionButtons/RegisterDebt';
-import Credit from '../../components/ActionButtons/RegisterCredit';
+import MoneyOut from '../../components/RegisterButtons/RegisterMoneyOut';
+import Debt from '../../components/RegisterButtons/RegisterDebt';
+import Credit from '../../components/RegisterButtons/RegisterCredit';
 
 import getTransactions from '../../hooks/api/getTransactions';
 
@@ -48,16 +50,11 @@ const Home = () => {
 
   return (
     <Container>
-      <Header>Coin Manager</Header>
-      <ActionButtons>
-        <MoneyInButton onClick={handleMoneyInButtonClick} />
-        <MoneyOut />
-      </ActionButtons>
+      <Header>
+        Coin Manager
+        <Logout src={logoutButton}/>
+      </Header>
       <Main>
-        <LeftButtons>
-          <Debt />
-          <Credit />
-        </LeftButtons>
         <Content>
           <CurrentAmount>Current Amount: ${currentAmount}</CurrentAmount>
           <TransactionHistory>
@@ -73,6 +70,14 @@ const Home = () => {
             ))}
           </TransactionHistory>
         </Content>
+        <ActionButtons>
+          <MoneyInButton onClick={handleMoneyInButtonClick} />
+          <MoneyOut />
+        </ActionButtons>
+        <ActionButtons>
+          <Debt />
+          <Credit />
+        </ActionButtons>
       </Main>
       <Footer>&copy; 2023 Coin Manager. All rights reserved.</Footer>
       {showMoneyIn && <MoneyIn onClose={handleMoneyInClose} />}
@@ -85,24 +90,36 @@ export default Home;
 // Styled components...
 
 const Container = styled.div`
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #8C11BE;
   font-family: Arial, sans-serif;
 `;
 
 const Header = styled.div`
+  width: 100%;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
 `;
+
+const Logout = styled.img`
+width: 23px;
+height: 24px;
+`; 
 
 const Main = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Content = styled.div`
@@ -148,14 +165,10 @@ const Footer = styled.div`
 `;
 
 const ActionButtons = styled.div`
+  width: 80%;
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-const LeftButtons = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+  justify-content: start;
+  flex-wrap: nowrap;
+  
 `;

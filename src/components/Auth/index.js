@@ -8,6 +8,7 @@ export const StyledContainer = styled(Container)`
   align-items: center;
   justify-content: space-between;
   padding: 30px;
+  background-color: #8C11BE;
 `;
 
 export const Title = styled.h1`
