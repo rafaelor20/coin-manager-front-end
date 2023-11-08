@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default styled(Link)`
   text-decoration: none;
-  color: #222;
+  color: #fff;
 
   &:hover {
     text-decoration: underline;

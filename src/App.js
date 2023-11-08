@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
+import MoneyIn from './pages/Register/MoneyIn';
 
 import { UserProvider } from './contexts/UserContext';
 
@@ -18,16 +19,52 @@ export default function App() {
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/Sign-up" element={<SignUp />} />
-
+            
             <Route
               path="/home"
               element={
                 <ProtectedRouteGuard>
                   <Home />
                 </ProtectedRouteGuard>
-              }
-            >
+              }>
             </Route>
+
+            <Route
+              path="/moneyIn"
+              element={
+                <ProtectedRouteGuard>
+                  <MoneyIn />
+                </ProtectedRouteGuard>
+              }>
+            </Route>
+            
+            <Route
+              path="/moneyOut"
+              element={
+                <ProtectedRouteGuard>
+                  <MoneyIn />
+                </ProtectedRouteGuard>
+              }>
+            </Route>
+
+            <Route
+              path="/credit"
+              element={
+                <ProtectedRouteGuard>
+                  <MoneyIn />
+                </ProtectedRouteGuard>
+              }>
+            </Route>
+
+            <Route
+              path="/debit"
+              element={
+                <ProtectedRouteGuard>
+                  <MoneyIn />
+                </ProtectedRouteGuard>
+              }>
+            </Route>
+
           </Routes>
         </Router>
       </UserProvider>

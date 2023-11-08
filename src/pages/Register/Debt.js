@@ -1,4 +1,4 @@
-import RegisterButton from './RegisterButton';
+import RegisterButton from './css/RegisterButton';
 
 export default function Debt() {
   return (
