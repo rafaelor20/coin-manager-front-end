@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Link from '../../components/Link';
 import { Container, Main, Content, CurrentAmount, TransactionHistory, Transaction, TransactionDate, TransactionDescription, TransactionAmount, ButtonsDiv } from './styles';
 
 import getTransactions from '../../hooks/api/getTransactions';

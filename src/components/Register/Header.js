@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import backSquare from '../../assets/back-square.svg';
+import Link from '../Link';
 
 export default function Header(props) {
   return (
     <Container>
       <p>{props.text}</p>
-      <img src={backSquare} alt="Log out button" width="23" height="24"/>
+      <Link to="/home">
+        <img src={backSquare} alt="return button" width="23" height="24"/>
+      </Link>
     </Container>
   );
 }

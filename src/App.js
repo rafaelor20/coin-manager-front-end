@@ -5,6 +5,9 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import MoneyIn from './pages/Register/MoneyIn';
+import MoneyOut from './pages/Register/MoneyOut';
+import Credit from './pages/Register/Credit';
+import Debt from './pages/Register/Debt';
 
 import { UserProvider } from './contexts/UserContext';
 
@@ -42,7 +45,7 @@ export default function App() {
               path="/moneyOut"
               element={
                 <ProtectedRouteGuard>
-                  <MoneyIn />
+                  <MoneyOut />
                 </ProtectedRouteGuard>
               }>
             </Route>
@@ -51,16 +54,16 @@ export default function App() {
               path="/credit"
               element={
                 <ProtectedRouteGuard>
-                  <MoneyIn />
+                  <Credit />
                 </ProtectedRouteGuard>
               }>
             </Route>
 
             <Route
-              path="/debit"
+              path="/debt"
               element={
                 <ProtectedRouteGuard>
-                  <MoneyIn />
+                  <Debt />
                 </ProtectedRouteGuard>
               }>
             </Route>

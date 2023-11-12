@@ -4,7 +4,7 @@ import Link from '../Link';
 export default function Debt() {
   return (
     <RegisterButton>
-      <Link to="/debit">Register Debit</Link>
+      <Link to="/debt">Register Debit</Link>
     </RegisterButton>
   );
 }

@@ -1,8 +1,8 @@
-import RegisterButton from './css/RegisterButton';
+import Register from './Register';
 
-export default function Debt() {
+export default function MoneyIn() {
   return (
-    <RegisterButton>Register Debts</RegisterButton>
+    <Register text='Debt'/>
   );
 }
 
