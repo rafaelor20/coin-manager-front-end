@@ -3,9 +3,11 @@ import Link from '../Link';
 
 export default function MoneyOut() {
   return (
-    <RegisterButton>
-      <Link to="/moneyOut">Register Money Out</Link>
-    </RegisterButton>
+    <Link to="/moneyOut">
+      <RegisterButton>
+        <p>Register Money Out</p>
+      </RegisterButton>
+    </Link>
   );
 }
 

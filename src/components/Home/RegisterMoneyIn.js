@@ -3,8 +3,10 @@ import Link from '../Link';
 
 export default function MoneyIn() {
   return (
-    <RegisterButton>
-      <Link to="/moneyIn">Register Money In</Link>
-    </RegisterButton>
+    <Link to="/moneyIn">
+      <RegisterButton>
+        <p>Register Money In</p>
+      </RegisterButton>
+    </Link>
   );
 }

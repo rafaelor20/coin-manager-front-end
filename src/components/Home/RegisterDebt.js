@@ -3,9 +3,11 @@ import Link from '../Link';
 
 export default function Debt() {
   return (
-    <RegisterButton>
-      <Link to="/debt">Register Debit</Link>
-    </RegisterButton>
+    <Link to="/debt">
+      <RegisterButton>
+        <p>Register Debt</p>
+      </RegisterButton>
+    </Link>
   );
 }
 

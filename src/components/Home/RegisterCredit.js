@@ -3,9 +3,11 @@ import Link from '../Link';
 
 export default function Credit() {
   return (
-    <RegisterButton>
-      <Link to="/credit">Register Credit</Link>
-    </RegisterButton>
+    <Link to="/credit">
+      <RegisterButton>
+        <p>Register Credit</p>
+      </RegisterButton>
+    </Link>
   );
 }
 
