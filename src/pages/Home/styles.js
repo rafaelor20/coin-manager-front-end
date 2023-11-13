@@ -32,27 +32,6 @@ export const CurrentAmount = styled.div`
   margin-bottom: 20px;
 `;
 
-export const TransactionHistory = styled.div`
-  text-align: left;
-`;
-
-export const Transaction = styled.div`
-  margin-bottom: 10px;
-`;
-
-export const TransactionDate = styled.span`
-  font-weight: bold;
-  margin-right: 10px;
-`;
-
-export const TransactionDescription = styled.span`
-  margin-right: 10px;
-`;
-
-export const TransactionAmount = styled.span`
-  color: ${({ isNegative }) => (isNegative ? 'red' : 'green')};
-`;
-
 export const ButtonsDiv = styled.div`
   width: 80%;
   margin-top: 20px;

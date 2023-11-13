@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Main, Content, CurrentAmount, TransactionHistory, Transaction, TransactionDate, TransactionDescription, TransactionAmount, ButtonsDiv } from './styles';
+import { Container, Main, Content, CurrentAmount, ButtonsDiv } from './styles';
 
 import getTransactions from '../../hooks/api/getTransactions';
 
+import TransactionContainer from '../../components/Home/TransactionHistory';
 import MoneyIn from '../../components/Home/RegisterMoneyIn';
 import MoneyOut from '../../components/Home/RegisterMoneyOut';
 import Debt from '../../components/Home/RegisterDebt';
@@ -44,18 +45,7 @@ export default function Home() {
       <Main>
         <Content>
           <CurrentAmount>Current Amount: ${currentAmount}</CurrentAmount>
-          <TransactionHistory>
-            <h3>Transaction History</h3>
-            {transactions.map((transaction) => (
-              <Transaction key={transaction.id}>
-                <TransactionDate>{transaction.date}</TransactionDate>
-                <TransactionDescription>{transaction.description}</TransactionDescription>
-                <TransactionAmount isNegative={transaction.amount < 0}>
-                  {transaction.amount}
-                </TransactionAmount>
-              </Transaction>
-            ))}
-          </TransactionHistory>
+          <TransactionContainer transactions={transactions}></TransactionContainer>
         </Content>
         <ButtonsDiv>
           <MoneyIn />
